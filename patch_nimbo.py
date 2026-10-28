@@ -197,8 +197,8 @@ def build(source_app: pathlib.Path, output_app: pathlib.Path | None, dry_run: bo
     (output_app / EXECUTABLE).write_bytes(patched)
     clone_info_path = output_app / "Contents/Info.plist"
     clone_info = plistlib.loads(clone_info_path.read_bytes())
-    clone_info["CFBundleDisplayName"] = f"Nimbo 中文 {version}"
-    clone_info["CFBundleName"] = f"Nimbo 中文 {version}"
+    clone_info["CFBundleDisplayName"] = output_app.stem
+    clone_info["CFBundleName"] = output_app.stem
     clone_info_path.write_bytes(plistlib.dumps(clone_info))
     if clone_info["CFBundleShortVersionString"] != version:
         raise ValueError("Copied bundle version changed during creation")
