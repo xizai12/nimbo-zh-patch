@@ -1,0 +1,24 @@
+# Generated applications and upstream assets must never be committed.
+*.app/
+*.app
+*.tar.gz
+*.zip
+*.dmg
+*.bin
+*.icns
+*.plist
+*.mjs
+
+# Local configuration and interpreter artifacts.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.p8
+.aws/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.pytest_cache/
