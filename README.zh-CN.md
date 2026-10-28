@@ -37,12 +37,14 @@ python patch_nimbo.py --source '/Applications/Nimbo.app'
 
 第二条命令默认在此仓库目录生成 `Nimbo 中文 <版本>.app`。实际以原版版本为准；例如本机原版是 0.6.2，命令只会生成 0.6.2 中文副本，**不会自动下载 0.6.3**。源程序、译文、两架构的嵌入资源、图标和 `Info.plist` 必须通过哈希/结构校验；有一项不符就停止。输出只能放在此仓库目录或其子目录的**新** `.app` 路径，不会覆盖已有副本，也不允许原地修改或写入 `/Applications`。
 
-如需另起一个副本，指定仓库内的绝对路径：
+如需自定义名称，指定仓库内的绝对路径。应用内部显示名会与输出文件名一致：
 
 ```bash
 python patch_nimbo.py --source '/Applications/Nimbo.app' \
-  --output "$PWD/Nimbo 中文 0.6.2-新副本.app"
+  --output "$PWD/Nimbo.app"
 ```
+
+这只会在**仓库目录内**生成一个同名的独立副本，不会删除或替换 `/Applications` 中的原版。先在独立 macOS 用户账号下用测试凭据评估，再考虑替换原版；务必保留可用于回退的原版备份。
 
 ### 从官方 0.6.3 归档生成
 
