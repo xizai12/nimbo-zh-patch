@@ -37,12 +37,14 @@ python patch_nimbo.py --source '/Applications/Nimbo.app'
 
 The second command creates `Nimbo 中文 <version>.app` in this repository directory. The version is determined by your original: if it is 0.6.2, the output is also 0.6.2. The patcher **does not download 0.6.3**. The source executable, translations, embedded resources for both architectures, icon, `Info.plist`, and bundle structure must pass verification. A mismatch stops the patch. Output must be a **new** `.app` path inside this repository or its subdirectories. Existing copies cannot be overwritten, and the original or `/Applications` cannot be the output.
 
-To use another output name, pass an absolute path within the repository:
+To use another output name, pass an absolute path within the repository. The app's internal display name follows the output filename:
 
 ```bash
 python patch_nimbo.py --source '/Applications/Nimbo.app' \
-  --output "$PWD/Nimbo 中文 0.6.2-new-copy.app"
+  --output "$PWD/Nimbo.app"
 ```
+
+This creates a separate copy named `Nimbo.app` **inside the repository**, not in `/Applications`. It does not remove or replace the original. Do not replace the original until the copy has been evaluated under a separate macOS user account with test credentials; keep a backup for rollback.
 
 ### Using the Official 0.6.3 Archive
 
